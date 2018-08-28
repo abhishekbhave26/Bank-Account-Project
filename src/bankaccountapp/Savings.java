@@ -9,9 +9,16 @@ public class Savings extends Account
     public Savings(String name,String SSN, double initDeposit)
     {
         super(name,SSN,initDeposit);
-        System.out.println("New Savings account");
+        accountNumber='1'+accountNumber;
+
 
     }
 
     // list any methods specific to the savings account
+
+    public void showInfo()
+    {
+        super.showInfo();
+        System.out.println("ACCOUNT TYPE : SAVINGS  ");
+    }
 }

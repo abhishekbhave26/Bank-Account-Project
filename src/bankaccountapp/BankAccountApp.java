@@ -9,6 +9,7 @@ public class BankAccountApp
         Checking ckhacc1=new Checking("Abhishek Bhave","123456789",1500);
 
         Savings savacc1=new Savings("Rohan Nayak","987456123",2000);
+        savacc1.showInfo();
 
 
 
