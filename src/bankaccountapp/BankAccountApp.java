@@ -10,6 +10,8 @@ public class BankAccountApp
 
         Savings savacc1=new Savings("Rohan Nayak","987456123",2000);
         savacc1.showInfo();
+        System.out.println();
+        ckhacc1.showInfo();
 
 
 

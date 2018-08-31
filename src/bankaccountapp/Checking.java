@@ -3,7 +3,8 @@ package bankaccountapp;
 public class Checking extends Account
 {
     // list properties specific to checking account like debit card, pin , 2 as first digit in acount
-    int debitCardNumber,PIN;
+    long debitCardNumber;
+    int PIN;
 
 
     // Constructor to initialize checking account properties
@@ -11,7 +12,7 @@ public class Checking extends Account
     {
         super(name,SSN,initDeposit) ;
         accountNumber='2'+accountNumber;
-
+        setDebitCard();
 
     }
 
@@ -19,7 +20,19 @@ public class Checking extends Account
 
     public void showInfo()
     {
-        super.showInfo();
         System.out.println("ACCOUNT TYPE : CHECKING  ");
+        super.showInfo();
+        System.out.println("Debit Card Number : "+debitCardNumber);
+        System.out.println("PIN is : "+PIN);
+
+    }
+
+    private void setDebitCard()
+    {
+        debitCardNumber=(long)(Math.random()*Math.pow(10,12));
+        PIN=(int)(Math.random()*Math.pow(10,4));
+
+
+
     }
 }
