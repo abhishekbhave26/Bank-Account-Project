@@ -5,9 +5,11 @@ package bankaccountapp;
 public abstract class Account implements IBaseRate
 {
     // list common properties for savings and checkings account
-    String name,SSN,accountNumber;
-    double balance,rate;
-    static int index=10000;
+    private String name,SSN;
+    protected String accountNumber;
+    private double balance;
+    protected double rate;
+    private static int index=10000;
 
     // Constructor to set base properties and initialize account
 
@@ -19,8 +21,14 @@ public abstract class Account implements IBaseRate
 
             index++;
             this.accountNumber=setAccountNumber();
+            setRate();
+
 
     }
+
+
+    public abstract void setRate();
+
 
     // set account number
     private String setAccountNumber()
@@ -33,6 +41,15 @@ public abstract class Account implements IBaseRate
 
     }
 
+    public void compound()
+    {
+        double accruedInterest=balance*(rate/100);
+        balance+=accruedInterest;
+        System.out.println("Accrued Interest : "+accruedInterest);
+        printsBalance();
+
+    }
+
 
     // list common methods like deposit withdraw etc
 
@@ -41,7 +58,8 @@ public abstract class Account implements IBaseRate
     {
         System.out.println("NAME : "+name+
                            "\nACCOUNT NUMBER : "+accountNumber+
-                            "\nBALANCE  :$ "+balance
+                            "\nBALANCE  :$ "+balance+
+                            "\nRATE : "+rate
 
 
         );
@@ -49,5 +67,39 @@ public abstract class Account implements IBaseRate
 
     }
 
+    public void deposit(double amount)
+    {
+        balance+=amount;
+        System.out.println("Deposited " +amount+ " to your account");
+        printsBalance();
 
+    }
+
+    public void withdraw(double amount)
+    {
+        if(amount>balance)
+            System.out.println("Invalid");
+        else
+            balance-=amount;
+            System.out.println("Withdrew " +amount+ " from your account");
+            printsBalance();
+
+    }
+
+    public void transfer(String toWhere,double amount)
+    {
+        if(amount>balance)
+            System.out.println("Invalid");
+        else
+            balance-=amount;
+            System.out.println("Transferring " +amount+ " from your account to "+toWhere);
+            printsBalance();
+
+    }
+
+    public void printsBalance()
+    {
+        System.out.println("Your balance is : $"+balance);
+
+    }
 }

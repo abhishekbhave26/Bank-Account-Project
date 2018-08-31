@@ -12,6 +12,7 @@ public class BankAccountApp
         savacc1.showInfo();
         System.out.println();
         ckhacc1.showInfo();
+        savacc1.deposit(1000);
 
 
 

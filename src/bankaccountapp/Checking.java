@@ -3,8 +3,8 @@ package bankaccountapp;
 public class Checking extends Account
 {
     // list properties specific to checking account like debit card, pin , 2 as first digit in acount
-    long debitCardNumber;
-    int PIN;
+    private long debitCardNumber;
+    private int PIN;
 
 
     // Constructor to initialize checking account properties
@@ -13,6 +13,13 @@ public class Checking extends Account
         super(name,SSN,initDeposit) ;
         accountNumber='2'+accountNumber;
         setDebitCard();
+
+    }
+
+    @Override
+    public void setRate()
+    {
+        rate=getBaseRate()*0.15;
 
     }
 
